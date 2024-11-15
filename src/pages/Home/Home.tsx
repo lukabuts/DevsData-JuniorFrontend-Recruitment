@@ -30,7 +30,10 @@ const Home = () => {
         <h2 className="uppercase text-2xl font-semibold">explore:</h2>
         <div className="flex w-full justify-around  gap-5 flex-wrap max-w-4xl">
           {rootResponse.map((response) => (
-            <div className="animate-fadeInUp opacity-0 transform translate-y-12 transition-all">
+            <div
+              key={response.name}
+              className="animate-fadeInUp opacity-0 transform translate-y-12 transition-all"
+            >
               <Link
                 to={`/${response.name}`}
                 className="rounded-lg hover:shadow-lg hover:shadow-gray-600 transition-all duration-300 ease-in-out relative w-56 h-56 flex items-center justify-center overflow-hidden"

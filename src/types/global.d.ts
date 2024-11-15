@@ -114,3 +114,46 @@ type FetchError = {
   code: string;
   stack: string;
 };
+
+interface PaginationButtonsProps {
+  previous: string | null;
+  next: string | null;
+  page: number;
+  setPage: (newPage: number) => void;
+}
+
+// BackButtonProps interface
+interface BackButtonProps {
+  children: React.ReactNode;
+}
+
+interface useFetchDataProps {
+  url: string;
+  id?: string;
+  filters?: {
+    page: number;
+    search: string;
+  };
+}
+
+// ListCardProps interface
+interface ListCardProps {
+  title: string;
+  items: string[];
+  type: string;
+  fallback?: string;
+}
+
+// InfoCardProps interface
+interface InfoCardProps {
+  label: string;
+  value: string;
+}
+
+interface ErrorCardProps {
+  message?: string;
+}
+
+interface IconsProps {
+  className?: string;
+}
