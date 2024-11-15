@@ -15,6 +15,12 @@ export default {
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
+      height: {
+        lvh: "100lvh",
+      },
+      gridTemplateColumns: {
+        "data-card": "repeat(auto-fill, minmax(250px, 1fr))",
+      },
     },
   },
   plugins: [],
