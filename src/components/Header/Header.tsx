@@ -61,7 +61,7 @@ const Header = () => {
               : "duration-300 flex absolute top-20 left-0 w-full flex-col items-end"
           }  ${
             isOpen && screenWidth < 750
-              ? "h-56 bg-black/90"
+              ? "bg-black/90 h-70"
               : screenWidth < 750 && "h-0"
           } `}
         >

@@ -2,10 +2,7 @@ import Loading from "../../components/Loading/Loading";
 import PaginationButtons from "../../components/PaginationButtons/PaginationButtons";
 import useFetchData from "../../hooks/useFetchData";
 import ErrorCard from "../../components/Cards/ErrorCard";
-import H1Heading from "../../components/Headings/H1Heading";
 import useHandleDataFiltering from "../../hooks/useHandleDataFiltering";
-import SearchedWordCard from "../../components/Cards/SearchedWordCard";
-import SearchCard from "../../components/Cards/SearchCard";
 import DataGridWrapper from "../../components/Wrappers/DataGridWrapper";
 import DataItemWrapper from "../../components/Wrappers/DataItemWrapper";
 import NoDataFoundCard from "../../components/Cards/NoDataFoundCard";
@@ -28,17 +25,14 @@ const Species = () => {
   });
 
   return (
-    <PageWrapper>
-      <H1Heading className="text-center mb-6">Star Wars Species</H1Heading>
-      <SearchCard
-        handleSearch={handleSearch}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        placeholder="Search for a species..."
-      />
-      {filters.search.length > 0 && (
-        <SearchedWordCard navigate={navigate} search={filters.search} />
-      )}
+    <PageWrapper
+      title="Species"
+      handleSearch={handleSearch}
+      searchTerm={searchTerm}
+      setSearchTerm={setSearchTerm}
+      navigate={navigate}
+      search={filters.search}
+    >
       {isLoading ? (
         <Loading />
       ) : isError ? (

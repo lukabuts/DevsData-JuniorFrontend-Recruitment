@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 import Loading from "./components/Loading/Loading";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Header from "./components/Header/Header";
+import { HelmetProvider } from "react-helmet-async";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const People = lazy(() => import("./pages/People/People"));
@@ -30,22 +31,24 @@ function App() {
           <Header />
           <ScrollToTop />
           <Suspense fallback={<Loading />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/people" element={<People />} />
-              <Route path="/people/:id" element={<PersonDetail />} />
-              <Route path="/films" element={<Films />} />
-              <Route path="/films/:id" element={<FilmDetail />} />
-              <Route path="/starships" element={<Starships />} />
-              <Route path="/starships/:id" element={<StarshipDetail />} />
-              <Route path="/vehicles" element={<Vehicles />} />
-              <Route path="/vehicles/:id" element={<VehicleDetail />} />
-              <Route path="/species" element={<Species />} />
-              <Route path="/species/:id" element={<SpeciesDetail />} />
-              <Route path="/planets" element={<Planets />} />
-              <Route path="/planets/:id" element={<PlanetDetail />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <HelmetProvider>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/people" element={<People />} />
+                <Route path="/people/:id" element={<PersonDetail />} />
+                <Route path="/films" element={<Films />} />
+                <Route path="/films/:id" element={<FilmDetail />} />
+                <Route path="/starships" element={<Starships />} />
+                <Route path="/starships/:id" element={<StarshipDetail />} />
+                <Route path="/vehicles" element={<Vehicles />} />
+                <Route path="/vehicles/:id" element={<VehicleDetail />} />
+                <Route path="/species" element={<Species />} />
+                <Route path="/species/:id" element={<SpeciesDetail />} />
+                <Route path="/planets" element={<Planets />} />
+                <Route path="/planets/:id" element={<PlanetDetail />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </HelmetProvider>
           </Suspense>
         </Router>
       </QueryClientProvider>

@@ -22,7 +22,7 @@ const PlanetDetail = () => {
 
   if (data)
     return (
-      <DetailPageWrapper>
+      <DetailPageWrapper title={data.name}>
         <H1Heading className="mb-8 text-center">{data.name}</H1Heading>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <InfoCard label="Climate" value={data.climate} />

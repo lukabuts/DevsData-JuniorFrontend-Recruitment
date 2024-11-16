@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import H1Heading from "../../components/Headings/H1Heading";
+import PageHelmet from "../../components/PageHelmet/PageHelmet";
 
 const Home = () => {
   const [text] = useTypewriter({
@@ -19,6 +20,10 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center md:gap-20 gap-10 mt-16">
+      <PageHelmet
+        title="Galaxy Chronicles"
+        description="Your ultimate guide to the Star Wars universe. Discover characters, planets, ships, and more with advanced tools and seamless navigation."
+      />
       <div className="w-fit flex">
         <H1Heading className="text-center">
           <span>{text}</span>
