@@ -5,6 +5,7 @@ const BackButton = ({ children }: BackButtonProps) => {
   return (
     <div className="mt-8 text-center">
       <button
+        aria-label="Go Back"
         onClick={() => navigate(-1)}
         className="text-blue-500 hover:text-blue-400 font-semibold"
       >

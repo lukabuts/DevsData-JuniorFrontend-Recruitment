@@ -22,6 +22,7 @@ const SearchCard = ({
             : "bg-blue-500 text-white hover:bg-blue-600"
         }`}
         disabled={searchWord.trim().length === 0}
+        aria-label="Search"
       >
         Search
       </button>

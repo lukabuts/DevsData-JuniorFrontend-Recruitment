@@ -20,10 +20,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center md:gap-20 gap-10 mt-16">
-      <PageHelmet
-        title="Galaxy Chronicles"
-        description="Your ultimate guide to the Star Wars universe. Discover characters, planets, ships, and more with advanced tools and seamless navigation."
-      />
+      <PageHelmet title="Galaxy Chronicles" />
       <div className="w-fit flex">
         <H1Heading className="text-center">
           <span>{text}</span>
@@ -52,7 +49,7 @@ const Home = () => {
                 <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10"></div>
                 <img
                   src={response.image}
-                  alt={response.name}
+                  alt={`${response.name} Page`}
                   className="absolute top-0 left-0 w-56 h-56 object-cover"
                   loading="lazy"
                 />

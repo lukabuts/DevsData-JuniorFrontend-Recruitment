@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import StarshipIcon from "../../assets/icons/StarshipIcon";
 import BurgerButton from "../BurgerButton/BurgerButton";
 
@@ -7,6 +7,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
+  const navigate = useNavigate();
 
   const pages: string[] = [
     "people",
@@ -50,9 +51,9 @@ const Header = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center w-full">
-        <Link to="/" className="flex items-center space-x-2">
+        <button onClick={() => navigate("/")} aria-label="Home">
           <StarshipIcon className="w-10 h-10 fill-white" />
-        </Link>
+        </button>
 
         <nav
           className={`text-lg overflow-hidden transition-all ${
@@ -61,7 +62,7 @@ const Header = () => {
               : "duration-300 flex absolute top-20 left-0 w-full flex-col items-end"
           }  ${
             isOpen && screenWidth < 750
-              ? "bg-black/90 h-70"
+              ? "bg-black/90 h-[16.5rem]"
               : screenWidth < 750 && "h-0"
           } `}
         >
