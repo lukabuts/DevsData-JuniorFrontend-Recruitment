@@ -5,7 +5,7 @@ type GeneralResponse = {
   previous: string | null;
 };
 
-type RootResponse = {
+type StarWarsCategories = {
   name: string;
   image: string;
 };
@@ -68,7 +68,7 @@ type Film = {
   created: string;
   director: string;
   edited: string;
-  episode_id: number;
+  episode_id: string;
   opening_crawl: string;
   planets: string[];
   producer: string;
@@ -158,6 +158,46 @@ interface ErrorCardProps {
   message?: string;
 }
 
+// IconsProps interface
 interface IconsProps {
   className?: string;
+}
+
+// DataFilter Type
+type DataFilter = {
+  search: string;
+  page: number;
+};
+
+interface SearchedWordCardProps {
+  navigate: (filters: DataFilter) => void;
+  search: string;
+}
+
+interface SearchCardProps {
+  handleSearch: (e: React.FormEvent<HTMLFormElement>) => void;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  placeholder: string;
+}
+
+// DataItemWrapperProps interface
+interface DataItemWrapperProps {
+  to: string;
+  children: React.ReactNode;
+}
+
+// DataGridWrapperProps interface
+interface DataGridWrapperProps {
+  children: React.ReactNode;
+}
+
+interface NoDataFoundCardProps {
+  search: string;
+  text: string;
+}
+
+interface DataCountCardProps {
+  count: number;
+  type: string;
 }
