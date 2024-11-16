@@ -10,7 +10,7 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="flex justify-center bg-cover bg-center bg-starship text-white bg-fixed bg-no-repeat overflow-auto p-10 min-h-lvh">
+    <div className="flex justify-center bg-cover bg-center bg-starship text-white bg-fixed bg-no-repeat overflow-auto sm:p-10 p-5 min-h-lvh">
       <QueryClientProvider client={queryClient}>
         <Router>
           <Suspense fallback={<Loading />}>
