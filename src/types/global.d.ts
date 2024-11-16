@@ -12,7 +12,7 @@ type StarWarsCategories = {
 
 // Planet response structure extending GeneralResponse
 type PlanetResponse = GeneralResponse & {
-  results: Planet[]; // List of planets on the current page
+  results: Planet[];
 };
 
 // Planet resource structure
@@ -30,6 +30,7 @@ type Planet = {
   url: string;
   created: string;
   edited: string;
+  films: string[];
 };
 
 // People response structure extending GeneralResponse
@@ -59,7 +60,7 @@ type Person = {
 
 // Film response structure extending GeneralResponse
 type FilmResponse = GeneralResponse & {
-  results: Film[]; // List of films on the current page
+  results: Film[];
 };
 
 // Film resource structure
@@ -82,7 +83,7 @@ type Film = {
 
 // Starship response structure extending GeneralResponse
 type StarshipResponse = GeneralResponse & {
-  results: Starship[]; // List of starships on the current page
+  results: Starship[];
 };
 
 // Starship resource structure
@@ -105,6 +106,55 @@ type Starship = {
   pilots: string[];
   starship_class: string;
   url: string;
+};
+
+// Vehicle response structure
+type Vehicle = {
+  name: string;
+  model: string;
+  manufacturer: string;
+  cost_in_credits: string;
+  length: string;
+  max_atmosphering_speed: string;
+  crew: string;
+  passengers: string;
+  cargo_capacity: string;
+  consumables: string;
+  vehicle_class: string;
+  pilots: string[];
+  films: string[];
+  url: string;
+  created: string;
+  edited: string;
+};
+
+// Vehicle response structure extending GeneralResponse
+type VehicleResponse = GeneralResponse & {
+  results: Vehicle[];
+};
+
+// Species response structure
+type Species = {
+  name: string;
+  classification: string;
+  designation: string;
+  average_height: string;
+  average_lifespan: string;
+  eye_colors: string;
+  hair_colors: string;
+  skin_colors: string;
+  language: string;
+  homeworld: string;
+  people: string[];
+  films: string[];
+  url: string;
+  created: string;
+  edited: string;
+};
+
+// Species response structure extending GeneralResponse
+type SpeciesResponse = GeneralResponse & {
+  results: Species[];
 };
 
 type FetchError = {
