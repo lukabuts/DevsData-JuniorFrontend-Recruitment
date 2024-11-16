@@ -11,7 +11,7 @@ import DataItemWrapper from "../../components/Wrappers/DataItemWrapper";
 import NoDataFoundCard from "../../components/Cards/NoDataFoundCard";
 import DataCountCard from "../../components/Cards/DataCountCard";
 
-const People = () => {
+const Films = () => {
   // Filtering Data
   const {
     navigate,
@@ -23,19 +23,19 @@ const People = () => {
   } = useHandleDataFiltering();
 
   // Fetching data
-  const { isLoading, data, isError, error } = useFetchData<PeopleResponse>({
-    url: "https://swapi.dev/api/people",
+  const { isLoading, data, isError, error } = useFetchData<FilmResponse>({
+    url: "https://swapi.dev/api/films",
     filters,
   });
 
   return (
     <div className="max-w-6xl mx-auto w-full">
-      <H1Heading className="text-center mb-6">Star Wars Characters</H1Heading>
+      <H1Heading className="text-center mb-6">Star Wars Films</H1Heading>
       <SearchCard
         handleSearch={handleSearch}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        placeholder="Search for a character..."
+        placeholder="Search for a film..."
       />
       {filters.search.length > 0 && (
         <SearchedWordCard navigate={navigate} search={filters.search} />
@@ -47,24 +47,27 @@ const People = () => {
       ) : data && data.count > 0 ? (
         <>
           <DataGridWrapper>
-            {data.results.map((person) => (
+            {data.results.map((film) => (
               <DataItemWrapper
-                key={person.name}
-                to={`/people/${person.url.split("/")[5]}`}
+                to={`/films/${film.url.split("/")[5]}`}
+                key={film.title}
               >
                 <h2 className="text-lg font-semibold text-white">
-                  {person.name}
+                  {film.title}
                 </h2>
                 <p className="text-gray-400">
-                  <strong>Birth Year:</strong> {person.birth_year}
+                  <strong>Director:</strong> {film.director}
                 </p>
                 <p className="text-gray-400">
-                  <strong>Gender:</strong> {person.gender}
+                  <strong>Producer:</strong> {film.producer}
+                </p>
+                <p className="text-gray-400">
+                  <strong>Release Date:</strong> {film.release_date}
                 </p>
               </DataItemWrapper>
             ))}
           </DataGridWrapper>
-          <DataCountCard count={data.count} type="character" />
+          <DataCountCard count={data.count} type="film" />
           <PaginationButtons
             page={filters.page}
             setPage={handlePageChange}
@@ -76,7 +79,7 @@ const People = () => {
         data?.count === 0 && (
           <NoDataFoundCard
             search={filters.search}
-            text="No Characters Found With Name"
+            text="No Films Found With Title"
           />
         )
       )}
@@ -84,4 +87,4 @@ const People = () => {
   );
 };
 
-export default People;
+export default Films;

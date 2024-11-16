@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import BackButton from "../../components/BackButton/BackButton";
 import Loading from "../../components/Loading/Loading";
 import useFetchPaginatedData from "../../hooks/useFetchData";
 import InfoCard from "../../components/Cards/InfoCard";
@@ -37,10 +36,6 @@ const PersonDetail = () => {
           <ListCard items={data.films} type="films" />
           <ListCard items={data.starships} type="starships" />
           <ListCard items={data.vehicles} type="vehicles" />
-        </div>
-
-        <div className="mt-10 text-center">
-          <BackButton>Back to People List</BackButton>
         </div>
       </div>
     );
