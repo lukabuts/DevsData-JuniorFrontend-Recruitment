@@ -1,3 +1,5 @@
+import AngleIcon from "../../assets/icons/AngleIcon";
+
 const PaginationButtons = ({
   previous,
   next,
@@ -10,9 +12,10 @@ const PaginationButtons = ({
         {previous && (
           <button
             onClick={() => setPage(page - 1)}
-            className="text-blue-400 hover:underline"
+            className="text-blue-400 hover:underline flex items-center gap-2"
           >
-            &lt; Previous Page
+            <AngleIcon className="fill-blue-400 size-4 rotate-180" />
+            <span>Previous Page</span>
           </button>
         )}
       </div>
@@ -20,9 +23,10 @@ const PaginationButtons = ({
         {next && (
           <button
             onClick={() => setPage(page + 1)}
-            className="text-blue-400 hover:underline"
+            className="text-blue-400 hover:underline flex items-center gap-2"
           >
-            Next Page &gt;
+            <span>Next Page</span>
+            <AngleIcon className="fill-blue-400 size-4" />
           </button>
         )}
       </div>

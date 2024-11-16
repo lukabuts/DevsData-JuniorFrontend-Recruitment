@@ -18,7 +18,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center md:gap-20 gap-10">
+    <div className="flex flex-col items-center justify-center md:gap-20 gap-10 mt-16">
       <div className="w-fit flex">
         <H1Heading className="text-center">
           <span>{text}</span>

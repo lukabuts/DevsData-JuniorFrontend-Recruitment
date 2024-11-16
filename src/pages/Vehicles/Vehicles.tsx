@@ -10,6 +10,7 @@ import DataGridWrapper from "../../components/Wrappers/DataGridWrapper";
 import DataItemWrapper from "../../components/Wrappers/DataItemWrapper";
 import NoDataFoundCard from "../../components/Cards/NoDataFoundCard";
 import DataCountCard from "../../components/Cards/DataCountCard";
+import PageWrapper from "../../components/Wrappers/PageWrapper";
 
 const Vehicles = () => {
   const {
@@ -27,7 +28,7 @@ const Vehicles = () => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto w-full">
+    <PageWrapper>
       <H1Heading className="text-center mb-6">Star Wars Vehicles</H1Heading>
       <SearchCard
         handleSearch={handleSearch}
@@ -81,7 +82,7 @@ const Vehicles = () => {
           />
         )
       )}
-    </div>
+    </PageWrapper>
   );
 };
 

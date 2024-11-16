@@ -5,6 +5,8 @@ import InfoCard from "../../components/Cards/InfoCard";
 import ListCard from "../../components/Cards/ListCard";
 import ErrorCard from "../../components/Cards/ErrorCard";
 import H1Heading from "../../components/Headings/H1Heading";
+import DetailPageWrapper from "../../components/Wrappers/DetailPageWrapper";
+import BackButton from "../../components/BackButton/BackButton";
 
 const PlanetDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,7 +22,7 @@ const PlanetDetail = () => {
 
   if (data)
     return (
-      <div className="max-w-4xl mx-auto backdrop-blur-lg bg-gray-900/80 text-white p-8 rounded-xl shadow-2xl w-full">
+      <DetailPageWrapper>
         <H1Heading className="mb-8 text-center">{data.name}</H1Heading>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <InfoCard label="Climate" value={data.climate} />
@@ -37,7 +39,8 @@ const PlanetDetail = () => {
           <ListCard items={data.residents} type="people" />
           <ListCard items={data.films} type="films" />
         </div>
-      </div>
+        <BackButton>Go Back</BackButton>
+      </DetailPageWrapper>
     );
 };
 

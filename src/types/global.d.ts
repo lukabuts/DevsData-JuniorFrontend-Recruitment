@@ -251,3 +251,12 @@ interface DataCountCardProps {
   count: number;
   type: string;
 }
+
+interface PageWrapperProps {
+  children: React.ReactNode;
+}
+
+interface BurgerButtonProps {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpen: boolean;
+}
