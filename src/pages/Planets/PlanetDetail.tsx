@@ -26,10 +26,16 @@ const PlanetDetail = () => {
         <H1Heading className="mb-8 text-center">{data.name}</H1Heading>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <InfoCard label="Climate" value={data.climate} />
-          <InfoCard label="Diameter" value={data.diameter} />
+          <InfoCard
+            label="Diameter"
+            value={Number(data.diameter).toLocaleString()}
+          />
           <InfoCard label="Gravity" value={data.gravity} />
           <InfoCard label="Orbital Period" value={data.orbital_period} />
-          <InfoCard label="Population" value={data.population} />
+          <InfoCard
+            label="Population"
+            value={Number(data.population).toLocaleString()}
+          />
           <InfoCard label="Rotation Period" value={data.rotation_period} />
           <InfoCard label="Surface Water" value={data.surface_water} />
           <InfoCard label="Terrain" value={data.terrain} />
