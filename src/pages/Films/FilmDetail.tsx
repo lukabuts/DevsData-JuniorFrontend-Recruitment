@@ -5,6 +5,8 @@ import InfoCard from "../../components/Cards/InfoCard";
 import ListCard from "../../components/Cards/ListCard";
 import ErrorCard from "../../components/Cards/ErrorCard";
 import H1Heading from "../../components/Headings/H1Heading";
+import DetailPageWrapper from "../../components/Wrappers/DetailPageWrapper";
+import BackButton from "../../components/BackButton/BackButton";
 
 const FilmDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -20,7 +22,7 @@ const FilmDetail = () => {
 
   if (data)
     return (
-      <div className="max-w-4xl mx-auto backdrop-blur-lg bg-gray-900/80 text-white p-8 rounded-xl shadow-2xl w-full">
+      <DetailPageWrapper>
         <H1Heading className="mb-8 text-center">{data.title}</H1Heading>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <InfoCard label="Episode ID" value={data.episode_id} />
@@ -28,11 +30,9 @@ const FilmDetail = () => {
           <InfoCard label="Producer" value={data.producer} />
           <InfoCard label="Release Date" value={data.release_date} />
         </div>
-
         <div className="mt-10">
           <InfoCard label="Opening Crawl" value={data.opening_crawl} />
         </div>
-
         <div className="mt-10 space-y-8">
           <ListCard items={data.characters} type="people" />
           <ListCard items={data.planets} type="planets" />
@@ -40,7 +40,8 @@ const FilmDetail = () => {
           <ListCard items={data.vehicles} type="vehicles" />
           <ListCard items={data.species} type="species" />
         </div>
-      </div>
+        <BackButton>Go Back</BackButton>
+      </DetailPageWrapper>
     );
 };
 

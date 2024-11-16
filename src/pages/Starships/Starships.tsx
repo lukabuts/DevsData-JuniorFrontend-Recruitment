@@ -10,6 +10,7 @@ import DataGridWrapper from "../../components/Wrappers/DataGridWrapper";
 import DataItemWrapper from "../../components/Wrappers/DataItemWrapper";
 import NoDataFoundCard from "../../components/Cards/NoDataFoundCard";
 import DataCountCard from "../../components/Cards/DataCountCard";
+import PageWrapper from "../../components/Wrappers/PageWrapper";
 
 const Starships = () => {
   // Filtering Data
@@ -29,7 +30,7 @@ const Starships = () => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto w-full">
+    <PageWrapper>
       <H1Heading className="text-center mb-6">Star Wars Starships</H1Heading>
       <SearchCard
         handleSearch={handleSearch}
@@ -83,7 +84,7 @@ const Starships = () => {
           />
         )
       )}
-    </div>
+    </PageWrapper>
   );
 };
 

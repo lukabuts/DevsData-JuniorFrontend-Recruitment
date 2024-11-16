@@ -10,6 +10,7 @@ import DataGridWrapper from "../../components/Wrappers/DataGridWrapper";
 import DataItemWrapper from "../../components/Wrappers/DataItemWrapper";
 import NoDataFoundCard from "../../components/Cards/NoDataFoundCard";
 import DataCountCard from "../../components/Cards/DataCountCard";
+import PageWrapper from "../../components/Wrappers/PageWrapper";
 
 const Planets = () => {
   const {
@@ -27,7 +28,7 @@ const Planets = () => {
   });
 
   return (
-    <div className="max-w-6xl mx-auto w-full">
+    <PageWrapper>
       <H1Heading className="text-center mb-6">Star Wars Planets</H1Heading>
       <SearchCard
         handleSearch={handleSearch}
@@ -68,7 +69,7 @@ const Planets = () => {
               </DataItemWrapper>
             ))}
           </DataGridWrapper>
-          <DataCountCard count={data.count} type="planets" />
+          <DataCountCard count={data.count} type="planet" />
           <PaginationButtons
             page={filters.page}
             setPage={handlePageChange}
@@ -84,7 +85,7 @@ const Planets = () => {
           />
         )
       )}
-    </div>
+    </PageWrapper>
   );
 };
 

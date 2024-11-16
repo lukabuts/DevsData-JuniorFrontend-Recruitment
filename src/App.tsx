@@ -3,6 +3,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Suspense, lazy } from "react";
 import Loading from "./components/Loading/Loading";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Header from "./components/Header/Header"; // Import the Header component
+
 const Home = lazy(() => import("./pages/Home/Home"));
 const People = lazy(() => import("./pages/People/People"));
 const PersonDetail = lazy(() => import("./pages/People/PersonDetail"));
@@ -24,6 +26,7 @@ function App() {
     <div className="flex justify-center bg-cover bg-center bg-starship text-white bg-fixed bg-no-repeat overflow-auto sm:p-10 p-5 min-h-lvh">
       <QueryClientProvider client={queryClient}>
         <Router>
+          <Header />
           <ScrollToTop />
           <Suspense fallback={<Loading />}>
             <Routes>
