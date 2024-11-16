@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Suspense, lazy } from "react";
 import Loading from "./components/Loading/Loading";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import Header from "./components/Header/Header"; // Import the Header component
+import Header from "./components/Header/Header";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const People = lazy(() => import("./pages/People/People"));
@@ -18,6 +18,7 @@ const Species = lazy(() => import("./pages/Species/Species"));
 const SpeciesDetail = lazy(() => import("./pages/Species/SpeciesDetail"));
 const Planets = lazy(() => import("./pages/Planets/Planets"));
 const PlanetDetail = lazy(() => import("./pages/Planets/PlanetDetail"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 function App() {
   const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ function App() {
               <Route path="/species/:id" element={<SpeciesDetail />} />
               <Route path="/planets" element={<Planets />} />
               <Route path="/planets/:id" element={<PlanetDetail />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </Router>
