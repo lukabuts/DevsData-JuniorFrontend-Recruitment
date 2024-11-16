@@ -14,7 +14,7 @@ const useFetchData = <T>({ url, id, filters }: useFetchDataProps) => {
     return response.data;
   };
 
-  return useQuery<T, Error>(
+  return useQuery<T, FetchError>(
     [url, id, filters?.page, filters?.search],
     fetchData,
     {

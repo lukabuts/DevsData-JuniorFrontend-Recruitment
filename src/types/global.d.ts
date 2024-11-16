@@ -127,6 +127,12 @@ interface BackButtonProps {
   children: React.ReactNode;
 }
 
+// H1HeadingProps interface
+interface H1HeadingProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
 interface useFetchDataProps {
   url: string;
   id?: string;
@@ -138,10 +144,8 @@ interface useFetchDataProps {
 
 // ListCardProps interface
 interface ListCardProps {
-  title: string;
   items: string[];
   type: string;
-  fallback?: string;
 }
 
 // InfoCardProps interface

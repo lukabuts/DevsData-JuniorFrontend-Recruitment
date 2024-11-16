@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import H1Heading from "../../components/Headings/H1Heading";
 
 const Home = () => {
   const [text] = useTypewriter({
@@ -19,12 +20,12 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-20">
       <div className="w-fit flex">
-        <h1 className="text-4xl font-bold text-center">
+        <H1Heading className="text-center">
           <span>{text}</span>
           <span>
             <Cursor />
           </span>
-        </h1>
+        </H1Heading>
       </div>
       <div className="w-full flex flex-col items-center gap-10">
         <h2 className="uppercase text-2xl font-semibold">explore:</h2>

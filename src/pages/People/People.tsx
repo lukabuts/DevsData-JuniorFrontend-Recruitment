@@ -1,10 +1,11 @@
 import { Link, useSearchParams } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import PaginationButtons from "../../components/PaginationButtons/PaginationButtons";
-import useFetchPaginatedData from "../../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 import { useEffect, useState } from "react";
 import ErrorCard from "../../components/Cards/ErrorCard";
 import ExitIcon from "../../assets/icons/ExitIcon";
+import H1Heading from "../../components/Headings/H1Heading";
 
 const People = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,11 +27,10 @@ const People = () => {
   const [searchTerm, setSearchTerm] = useState(filters.search);
 
   // Fetching data
-  const { isLoading, data, isError, error } =
-    useFetchPaginatedData<PeopleResponse>({
-      url: "https://swapi.dev/api/people",
-      filters,
-    });
+  const { isLoading, data, isError, error } = useFetchData<PeopleResponse>({
+    url: "https://swapi.dev/api/people",
+    filters,
+  });
 
   // Handle search
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,16 +60,14 @@ const People = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 w-full">
-      <h1 className="text-3xl font-bold text-center text-white mb-6">
-        Star Wars Characters
-      </h1>
+    <div className="max-w-6xl mx-auto w-full">
+      <H1Heading className="text-center mb-6">Star Wars Characters</H1Heading>
       <form onSubmit={handleSearch} className="mb-6 flex justify-center">
         <input
           type="search"
           placeholder="Search by name..."
           value={searchTerm}
-          className="p-2 w-1/3 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-2 w-full max-w-80 bg-gray-800 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
