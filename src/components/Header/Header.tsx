@@ -7,9 +7,15 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
-  const linkClassName = `hover:text-gray-400 ${
-    isOpen && screenWidth < 750 ? "px-4 py-2" : ""
-  }`;
+
+  const pages: string[] = [
+    "people",
+    "films",
+    "starships",
+    "vehicles",
+    "species",
+    "planets",
+  ];
 
   useEffect(() => {
     // Handle Scrolling
@@ -59,21 +65,18 @@ const Header = () => {
               : screenWidth < 750 && "h-0"
           } `}
         >
-          <Link to="/people" className={linkClassName}>
-            People
-          </Link>
-          <Link to="/films" className={linkClassName}>
-            Films
-          </Link>
-          <Link to="/starships" className={linkClassName}>
-            Starships
-          </Link>
-          <Link to="/vehicles" className={linkClassName}>
-            Vehicles
-          </Link>
-          <Link to="/species" className={linkClassName}>
-            Species
-          </Link>
+          {pages.map((page) => (
+            <Link
+              key={page}
+              to={`/${page}`}
+              className={`hover:text-gray-400 capitalize ${
+                screenWidth < 750 ? "px-4 py-2" : ""
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              {page}
+            </Link>
+          ))}
         </nav>
         {screenWidth < 750 && (
           <BurgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
