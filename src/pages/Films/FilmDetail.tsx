@@ -22,7 +22,7 @@ const FilmDetail = () => {
 
   if (data)
     return (
-      <DetailPageWrapper>
+      <DetailPageWrapper title={data.title} description={data.opening_crawl}>
         <H1Heading className="mb-8 text-center">{data.title}</H1Heading>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <InfoCard label="Episode ID" value={data.episode_id} />

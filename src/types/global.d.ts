@@ -254,9 +254,26 @@ interface DataCountCardProps {
 
 interface PageWrapperProps {
   children: React.ReactNode;
+  title: string;
+  handleSearch: (e: React.FormEvent<HTMLFormElement>) => void;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  navigate: (filters: DataFilter) => void;
+  search: string;
+}
+
+interface DetailPageWrapperProps {
+  children: React.ReactNode;
+  title: string;
+  description?: string;
 }
 
 interface BurgerButtonProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isOpen: boolean;
+}
+
+interface PageHelmetProps {
+  title: string;
+  description?: string;
 }
