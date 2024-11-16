@@ -55,7 +55,8 @@ const Planets = () => {
                   <strong>Terrain:</strong> {planet.terrain}
                 </p>
                 <p className="text-gray-400">
-                  <strong>Population:</strong> {planet.population}
+                  <strong>Population:</strong>{" "}
+                  {Number(planet.population).toLocaleString()}
                 </p>
                 <p className="text-gray-400">
                   <strong>Orbital Period:</strong> {planet.orbital_period} days
