@@ -70,7 +70,7 @@ const Header = () => {
             <Link
               key={page}
               to={`/${page}`}
-              className={`hover:text-gray-400 capitalize ${
+              className={`hover:text-gray-400 capitalize first:pt-0 ${
                 screenWidth < 750 ? "px-4 py-2" : ""
               }`}
               onClick={() => setIsOpen(false)}
