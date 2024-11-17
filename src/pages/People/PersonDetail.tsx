@@ -11,31 +11,34 @@ const PersonDetail = () => {
     id,
   });
 
-  if (data)
-    return (
-      <DetailPageWrapper
-        isError={isError}
-        isLoading={isLoading}
-        error={error}
-        title={data.name}
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <InfoCard label="Birth Year" value={data.birth_year} />
-          <InfoCard label="Gender" value={data.gender} />
-          <InfoCard label="Height" value={`${data.height} cm`} />
-          <InfoCard label="Mass" value={`${data.mass} kg`} />
-          <InfoCard label="Hair Color" value={data.hair_color} />
-          <InfoCard label="Eye Color" value={data.eye_color} />
-          <InfoCard label="Skin Color" value={data.skin_color} />
-        </div>
+  return (
+    <DetailPageWrapper
+      isError={isError}
+      isLoading={isLoading}
+      error={error}
+      title={data?.name}
+    >
+      {data && (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <InfoCard label="Birth Year" value={data.birth_year} />
+            <InfoCard label="Gender" value={data.gender} />
+            <InfoCard label="Height" value={`${data.height} cm`} />
+            <InfoCard label="Mass" value={`${data.mass} kg`} />
+            <InfoCard label="Hair Color" value={data.hair_color} />
+            <InfoCard label="Eye Color" value={data.eye_color} />
+            <InfoCard label="Skin Color" value={data.skin_color} />
+          </div>
 
-        <div className="mt-10 space-y-8">
-          <ListCard items={data.films} type="films" />
-          <ListCard items={data.starships} type="starships" />
-          <ListCard items={data.vehicles} type="vehicles" />
-        </div>
-      </DetailPageWrapper>
-    );
+          <div className="mt-10 space-y-8">
+            <ListCard items={data.films} type="films" />
+            <ListCard items={data.starships} type="starships" />
+            <ListCard items={data.vehicles} type="vehicles" />
+          </div>
+        </>
+      )}
+    </DetailPageWrapper>
+  );
 };
 
 export default PersonDetail;

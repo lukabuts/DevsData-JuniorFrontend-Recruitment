@@ -268,7 +268,7 @@ interface PageWrapperProps {
 
 interface DetailPageWrapperProps {
   children: React.ReactNode;
-  title: string;
+  title?: string;
   description?: string;
   isLoading: boolean;
   isError: boolean;

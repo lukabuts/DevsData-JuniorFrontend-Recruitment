@@ -11,27 +11,30 @@ const StarshipDetail = () => {
     url: "https://swapi.dev/api/starships",
     id,
   });
-  if (data)
-    return (
-      <DetailPageWrapper
-        isError={isError}
-        isLoading={isLoading}
-        error={error}
-        title={data.name}
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <InfoCard label="Model" value={data.model} />
-          <InfoCard label="Manufacturer" value={data.manufacturer} />
-          <InfoCard label="Cost in Credits" value={data.cost_in_credits} />
-          <InfoCard label="Class" value={data.starship_class} />
-        </div>
+  return (
+    <DetailPageWrapper
+      isError={isError}
+      isLoading={isLoading}
+      error={error}
+      title={data?.name}
+    >
+      {data && (
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <InfoCard label="Model" value={data.model} />
+            <InfoCard label="Manufacturer" value={data.manufacturer} />
+            <InfoCard label="Cost in Credits" value={data.cost_in_credits} />
+            <InfoCard label="Class" value={data.starship_class} />
+          </div>
 
-        <div className="mt-10 space-y-8">
-          <ListCard items={data.films} type="films" />
-          <ListCard items={data.pilots} type="people" />
-        </div>
-      </DetailPageWrapper>
-    );
+          <div className="mt-10 space-y-8">
+            <ListCard items={data.films} type="films" />
+            <ListCard items={data.pilots} type="people" />
+          </div>
+        </>
+      )}
+    </DetailPageWrapper>
+  );
 };
 
 export default StarshipDetail;
