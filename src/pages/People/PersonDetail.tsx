@@ -1,13 +1,8 @@
 import { useParams } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
 import useFetchPaginatedData from "../../hooks/useFetchData";
 import InfoCard from "../../components/Cards/InfoCard";
 import ListCard from "../../components/Cards/ListCard";
-import ErrorCard from "../../components/Cards/ErrorCard";
-import H1Heading from "../../components/Headings/H1Heading";
 import DetailPageWrapper from "../../components/Wrappers/DetailPageWrapper";
-import BackButton from "../../components/BackButton/BackButton";
-
 const PersonDetail = () => {
   const { id } = useParams<{ id: string }>();
 
@@ -16,14 +11,14 @@ const PersonDetail = () => {
     id,
   });
 
-  if (isLoading) return <Loading />;
-
-  if (isError) return <ErrorCard message={error?.message} />;
-
   if (data)
     return (
-      <DetailPageWrapper title={data.name}>
-        <H1Heading className="mb-8 text-center">{data.name}</H1Heading>
+      <DetailPageWrapper
+        isError={isError}
+        isLoading={isLoading}
+        error={error}
+        title={data.name}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <InfoCard label="Birth Year" value={data.birth_year} />
           <InfoCard label="Gender" value={data.gender} />
@@ -39,7 +34,6 @@ const PersonDetail = () => {
           <ListCard items={data.starships} type="starships" />
           <ListCard items={data.vehicles} type="vehicles" />
         </div>
-        <BackButton>Go Back</BackButton>
       </DetailPageWrapper>
     );
 };

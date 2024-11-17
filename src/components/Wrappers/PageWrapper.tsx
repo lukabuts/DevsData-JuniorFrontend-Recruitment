@@ -1,7 +1,13 @@
+import DataCountCard from "../Cards/DataCountCard";
+import ErrorCard from "../Cards/ErrorCard";
+import NoDataFoundCard from "../Cards/NoDataFoundCard";
 import SearchCard from "../Cards/SearchCard";
 import SearchedWordCard from "../Cards/SearchedWordCard";
 import H1Heading from "../Headings/H1Heading";
+import Loading from "../Loading/Loading";
 import PageHelmet from "../PageHelmet/PageHelmet";
+import PaginationButtons from "../PaginationButtons/PaginationButtons";
+import DataGridWrapper from "./DataGridWrapper";
 
 const PageWrapper = ({
   children,
@@ -10,7 +16,12 @@ const PageWrapper = ({
   searchTerm,
   setSearchTerm,
   navigate,
-  search,
+  data,
+  filters,
+  handlePageChange,
+  isLoading,
+  isError,
+  error,
 }: PageWrapperProps) => {
   return (
     <div className="max-w-6xl mx-auto w-full mt-16">
@@ -24,10 +35,31 @@ const PageWrapper = ({
           .toLocaleLowerCase()
           .slice(0, -1)}...`}
       />
-      {search && search.length > 0 && (
-        <SearchedWordCard navigate={navigate} search={search} />
+      {filters.search && filters.search.length > 0 && (
+        <SearchedWordCard navigate={navigate} search={filters.search} />
       )}
-      {children}
+      {isLoading ? (
+        <Loading />
+      ) : isError ? (
+        <ErrorCard message={error?.message} />
+      ) : data && data.count > 0 ? (
+        <>
+          <DataGridWrapper>{children}</DataGridWrapper>
+          <DataCountCard count={data.count} type={title.slice(0, -1)} />
+          <PaginationButtons
+            page={filters.page}
+            setPage={handlePageChange}
+            pageLength={Math.ceil(data.count / 10)}
+          />
+        </>
+      ) : (
+        data?.count === 0 && (
+          <NoDataFoundCard
+            search={filters.search}
+            text="No Films Found With Title"
+          />
+        )
+      )}
     </div>
   );
 };

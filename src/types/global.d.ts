@@ -166,10 +166,9 @@ type FetchError = {
 };
 
 interface PaginationButtonsProps {
-  previous: string | null;
-  next: string | null;
   page: number;
   setPage: (newPage: number) => void;
+  pageLength: number;
 }
 
 // BackButtonProps interface
@@ -259,13 +258,21 @@ interface PageWrapperProps {
   searchTerm: string;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
   navigate: (filters: DataFilter) => void;
-  search: string;
+  data?: GeneralResponse;
+  filters: DataFilter;
+  handlePageChange: (newPage: number) => void;
+  isLoading: boolean;
+  isError: boolean;
+  error: FetchError | null;
 }
 
 interface DetailPageWrapperProps {
   children: React.ReactNode;
   title: string;
   description?: string;
+  isLoading: boolean;
+  isError: boolean;
+  error: FetchError | null;
 }
 
 interface BurgerButtonProps {
