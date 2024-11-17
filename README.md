@@ -51,7 +51,7 @@ npm run dev
 If you're using Yarn:
 
 ```bash
-yarn run dev
+yarn dev
 ```
 
 ## Website Structure
@@ -119,5 +119,6 @@ The website is organized into several sections, each representing different part
 - **React Router:** For navigation and handling route management.
 - **React Query:** For managing data fetching and state.
 - **React Helmet:** For managing meta tags and head elements in the document.
+- **React Paginate:** For implementing pagination and improving user experience on paginated data.
 - **Tailwind CSS:** For styling the website.
 - **TypeScript:** For type safety and improved development experience.

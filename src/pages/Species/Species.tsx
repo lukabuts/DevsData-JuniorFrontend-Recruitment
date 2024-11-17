@@ -1,12 +1,6 @@
-import Loading from "../../components/Loading/Loading";
-import PaginationButtons from "../../components/PaginationButtons/PaginationButtons";
 import useFetchData from "../../hooks/useFetchData";
-import ErrorCard from "../../components/Cards/ErrorCard";
 import useHandleDataFiltering from "../../hooks/useHandleDataFiltering";
-import DataGridWrapper from "../../components/Wrappers/DataGridWrapper";
 import DataItemWrapper from "../../components/Wrappers/DataItemWrapper";
-import NoDataFoundCard from "../../components/Cards/NoDataFoundCard";
-import DataCountCard from "../../components/Cards/DataCountCard";
 import PageWrapper from "../../components/Wrappers/PageWrapper";
 
 const Species = () => {
@@ -31,55 +25,35 @@ const Species = () => {
       searchTerm={searchTerm}
       setSearchTerm={setSearchTerm}
       navigate={navigate}
-      search={filters.search}
+      filters={filters}
+      handlePageChange={handlePageChange}
+      data={data}
+      isLoading={isLoading}
+      isError={isError}
+      error={error}
     >
-      {isLoading ? (
-        <Loading />
-      ) : isError ? (
-        <ErrorCard message={error?.message} />
-      ) : data && data.count > 0 ? (
-        <>
-          <DataGridWrapper>
-            {data.results.map((species) => (
-              <DataItemWrapper
-                to={`/species/${species.url.split("/")[5]}`}
-                key={species.name}
-              >
-                <h2 className="text-lg font-semibold text-white">
-                  {species.name}
-                </h2>
-                <p className="text-gray-400">
-                  <strong>Classification:</strong> {species.classification}
-                </p>
-                <p className="text-gray-400">
-                  <strong>Designation:</strong> {species.designation}
-                </p>
-                <p className="text-gray-400">
-                  <strong>Average Height:</strong> {species.average_height} cm
-                </p>
-                <p className="text-gray-400">
-                  <strong>Average Lifespan:</strong> {species.average_lifespan}{" "}
-                  years
-                </p>
-              </DataItemWrapper>
-            ))}
-          </DataGridWrapper>
-          <DataCountCard count={data.count} type="specie" />
-          <PaginationButtons
-            page={filters.page}
-            setPage={handlePageChange}
-            previous={data.previous}
-            next={data.next}
-          />
-        </>
-      ) : (
-        data?.count === 0 && (
-          <NoDataFoundCard
-            search={filters.search}
-            text="No Species Found With Name"
-          />
-        )
-      )}
+      {data &&
+        data.results.map((species) => (
+          <DataItemWrapper
+            to={`/species/${species.url.split("/")[5]}`}
+            key={species.name}
+          >
+            <h2 className="text-lg font-semibold text-white">{species.name}</h2>
+            <p className="text-gray-400">
+              <strong>Classification:</strong> {species.classification}
+            </p>
+            <p className="text-gray-400">
+              <strong>Designation:</strong> {species.designation}
+            </p>
+            <p className="text-gray-400">
+              <strong>Average Height:</strong> {species.average_height} cm
+            </p>
+            <p className="text-gray-400">
+              <strong>Average Lifespan:</strong> {species.average_lifespan}{" "}
+              years
+            </p>
+          </DataItemWrapper>
+        ))}
     </PageWrapper>
   );
 };

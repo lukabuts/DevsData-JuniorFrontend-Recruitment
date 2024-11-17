@@ -1,12 +1,8 @@
 import { useParams } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
 import useFetchPaginatedData from "../../hooks/useFetchData";
 import InfoCard from "../../components/Cards/InfoCard";
 import ListCard from "../../components/Cards/ListCard";
-import ErrorCard from "../../components/Cards/ErrorCard";
-import H1Heading from "../../components/Headings/H1Heading";
 import DetailPageWrapper from "../../components/Wrappers/DetailPageWrapper";
-import BackButton from "../../components/BackButton/BackButton";
 
 const PlanetDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,14 +12,14 @@ const PlanetDetail = () => {
     id,
   });
 
-  if (isLoading) return <Loading />;
-
-  if (isError) return <ErrorCard message={error?.message} />;
-
   if (data)
     return (
-      <DetailPageWrapper title={data.name}>
-        <H1Heading className="mb-8 text-center">{data.name}</H1Heading>
+      <DetailPageWrapper
+        isLoading={isLoading}
+        isError={isError}
+        error={error}
+        title={data.name}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <InfoCard label="Climate" value={data.climate} />
           <InfoCard
@@ -45,7 +41,6 @@ const PlanetDetail = () => {
           <ListCard items={data.residents} type="people" />
           <ListCard items={data.films} type="films" />
         </div>
-        <BackButton>Go Back</BackButton>
       </DetailPageWrapper>
     );
 };
